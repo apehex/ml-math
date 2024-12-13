@@ -22,4 +22,4 @@ $$\begin{align}
 
 This theorem has many variants, depending on the architecture of the approximation function and / or the target function.
 
-In particular, the [arbitrary width][arbitrary-width.md] and [arbitrary depth][arbitrary-depth.md] variants are the theoretical foundation for the perceptron models.
+In particular, the [arbitrary width](arbitrary-width.md) and [arbitrary depth](arbitrary-depth.md) variants are the theoretical foundation for the perceptron models.

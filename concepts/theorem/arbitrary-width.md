@@ -15,7 +15,7 @@ With enough neurons, a single layer perceptron can approximate any continuous fu
 The set of single layer perceptrons is defined as:
 
 $$\begin{align}
-\mathcal{G}_{\sigma} = \{x \mapsto C . ( \sigma \bullet ( A . x + b ) ), \, k \in \mathbb{N}, \, A \in \mathbb{R}^{k \times n}, \, b \in \mathbb{R}^{k}, \, C \in \mathbb{R}^{m \times k} \}
+\mathcal{G}_{\sigma} = \{ x \mapsto C . ( \sigma \bullet ( A . x + b ) ), \, k \in \mathbb{N}, \, A \in \mathbb{R}^{k \times n}, \, b \in \mathbb{R}^{k}, \, C \in \mathbb{R}^{m \times k} \}
 \end{align}$$
 
 Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
