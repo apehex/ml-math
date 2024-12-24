@@ -23,6 +23,11 @@ Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
 ## Statement
 
 $$\begin{align}
-\forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}_0(\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}(\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
 \exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert < \epsilon
+\end{align}$$
+
+$$\begin{align}
+\forall f \in \mathcal{F}, \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_{2} < \epsilon
 \end{align}$$
