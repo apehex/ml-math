@@ -23,6 +23,6 @@ Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
 ## Statement
 
 $$\begin{align}
-\forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}_{0} (\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
-\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_\infty < \epsilon
+\forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}\_{0} (\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert\_\infty < \epsilon
 \end{align}$$
