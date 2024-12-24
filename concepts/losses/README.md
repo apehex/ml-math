@@ -4,7 +4,7 @@ Computing the function norms introduced in [the approximation theorems](../theor
 - they often require to evaluate the function on an *infinite* input space
 - the data is simply not available
 
-Instead, heuristics called "loss functions" are computed on a finite set of data points.
+Instead, heuristics called "loss functions" are computed on a [finite set of data points](../datasets/README.md).
 
 They quantify the quality of an approximation with tools from the probability theory, algebra, etc.
 
