@@ -14,8 +14,8 @@ With enough layers, a fully connected ReLU network can approximate any Bochnerâ€
 ## Statement
 
 $$
-\begin{align}
-\forall f \in \mathcal{L}_{p}(\mathbb{R}^{n}, \mathbb{R}^{m}), \quad \forall \epsilon \in \mathcal{R}^{*+} \\
-\exists g \in \mathcal{G}_{max(n+1, m)}, \quad \text{such that} \quad \int_{\mathbb{R}^{n}} \Vert f(x) - g(x) \Vert^{p} dx < \epsilon
-\end{align}
+\begin{align*}
+\forall f \in \mathcal{L}_{p}(\mathbb{R}^{n}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\exists g \in \mathcal{G}_{max(n+1, m)}, \\ \text{such that} \\ \int_{\mathbb{R}^{n}} \Vert f(x) - g(x) \Vert^{p} dx < \epsilon
+\end{align*}
 $$
