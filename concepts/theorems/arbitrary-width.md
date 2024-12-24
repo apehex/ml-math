@@ -22,7 +22,7 @@ Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
 
 ## Statement
 
-$$\begin{align}
+```math
 \forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}_0 (\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
 \exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_\infty < \epsilon
-\end{align}$$
+```
