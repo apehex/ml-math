@@ -29,5 +29,5 @@ $$\begin{align}
 
 $$\begin{align}
 \forall f \in \mathcal{F}, \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
-\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert < \epsilon
+\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_{2} < \epsilon
 \end{align}$$
