@@ -18,6 +18,11 @@ $$\begin{align}
 \mathcal{G}_{\sigma} = \lbrace x \mapsto C . ( \sigma \bullet ( A . x + b ) ), \\ k \in \mathbb{N}, \\ A \in \mathbb{R}^{k \times n}, \\ b \in \mathbb{R}^{k}, \\ C \in \mathbb{R}^{m \times k} \rbrace
 \end{align}$$
 
+$$\begin{align}
+\forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}_0(\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_{\infty} < \epsilon
+\end{align}$$
+
 Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
 
 ## Statement
@@ -26,5 +31,3 @@ $$\begin{align}
 \forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}_0(\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
 \exists g \in \mathcal{G}_{\sigma}, \\ \text{such that} \\ \Vert f - g \Vert_{\infty} < \epsilon
 \end{align}$$
-
-a

@@ -19,5 +19,3 @@ $$
 \exists g \in \mathcal{G}_{max(n+1, m)}, \\ \text{such that} \\ \int_{\mathbb{R}^{n}} \Vert f(x) - g(x) \Vert^{p} dx < \epsilon
 \end{align}
 $$
-
-a
