@@ -16,8 +16,8 @@ These theorems establish the existence of neural network approximation of functi
 ## Statement
 
 $$\begin{align}
-\forall f \in \mathcal{F}, \, \forall \epsilon \in \mathcal{R}^{*+} \\
-\exists g \in \mathcal{G}, \, \text{such that} \, \Vert f - g \Vert < \epsilon
+\forall f \in \mathcal{F}, \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
+\exists g \in \mathcal{G}, \\ \text{such that} \\ \Vert f - g \Vert < \epsilon
 \end{align}$$
 
 ## Special Cases
