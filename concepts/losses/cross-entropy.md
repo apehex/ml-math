@@ -13,13 +13,13 @@
 ## Information Content
 
 $$\begin{align}
-I(E) = \log\_{2} \left( \frac{1}{p(E)} \right)
+I(E) = \log\_{2} \left( \frac{1}{P(E)} \right)
 \end{align}$$
 
 ## Cross Entropy
 
 $$\begin{align}
-H(P, Q) = -\operatorname{E}\_{P} \left[ \log Q \right]
+H(P, Q) = -\mathrm{E}\_{P} \left[ \log Q \right]
 \end{align}$$
 
 For discrete variables:
