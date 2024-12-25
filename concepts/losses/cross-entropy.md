@@ -19,7 +19,7 @@ I(E) = \log\_{2} \left( \frac{1}{P(E)} \right)
 ## Cross Entropy
 
 $$\begin{align}
-H(P, Q) = -\mathrm{E}\_{P} \left[ \log Q \right]
+H(P, Q) = -\mathrm{E}\_{\sim P} \left[ \log Q \right]
 \end{align}$$
 
 For discrete variables:
