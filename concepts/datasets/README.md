@@ -2,7 +2,7 @@
 
 Usually, no analytical expression of the target functions are known.
 
-Instead of a full map, it is defined by a finite dataset of evaluations $(x_i, y_i)$ of the function.
+Instead of a full map, it is defined by a finite dataset of evaluations $(\mathbf{x}^{(k)}, \mathbf{y}^{(k)}))$ of the function.
 
 ## Notations
 
@@ -13,10 +13,10 @@ Instead of a full map, it is defined by a finite dataset of evaluations $(x_i, y
 | $n = \vert \mathcal{D} \vert$                                             | The cardinality of $\mathcal{D}$                                                  |
 | $\mathcal{D} = \lbrace \mathbf{s}^{(1)}, \dots, \mathbf{s}^{(n)} \rbrace$ | The dataset, composed of $n$ samples                                              |
 | $\mathbf{s}^{(k)} = (\mathbf{x}^{(k)}, \mathbf{y}^{(k)})$                 | A sample of matching input and target                                             |
-| $\mathbf{x}^{(i)} = [x^{(i)}\_1, x^{(i)}\_2, \dots, x^{(i)}\_{r\_x}]$     | An input of rank $r\_x$                                                           |
-| $\mathbf{y}^{(i)} = [y^{(i)}\_1, y^{(i)}\_2, \dots, y^{(i)}\_{r\_y}]$     | A target of rank $r\_y$                                                           |
+| $\mathbf{x}^{(k)} = [x^{(k)}\_1, x^{(k)}\_2, \dots, x^{(k)}\_{r\_x}]$     | An input tensor of rank $r\_x$                                                    |
+| $\mathbf{y}^{(k)} = [y^{(k)}\_1, y^{(k)}\_2, \dots, y^{(k)}\_{r\_y}]$     | A target ransor of rank $r\_y$                                                    |
 
-## Types
+## Data Types
 
 The datasets can be sorted by:
 
