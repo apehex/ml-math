@@ -28,14 +28,14 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 The model is trained to reconstruct the inputs:
 
 $$\begin{align}
-\mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n), \mathbf{x}^{(n)})} \rbrace
+\mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n)}, \mathbf{x}^{(n)})} \rbrace
 \end{align}$$
 
 It learns to reduce the dimensionality:
 
 $$\begin{align}
 \mathbf{z} &= g_{\phi}(\mathbf{x}) \\\\
-\mathbf{\hat{x}} &= g_{\phi}(\mathbf{z})
+\mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
 While minimizing the error:
@@ -49,12 +49,12 @@ L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_
 A DAE is actually a regular AE operating on scrambled inputs:
 
 $$\begin{align}
-\mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n), \mathbf{x}^{(n)})} \rbrace
+\mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n)}, \mathbf{x}^{(n)})} \rbrace
 \end{align}$$
 
 $$\begin{align}
-\mathbf{z} &= g_{\phi}(\mathbf{x}) \\\\
-\mathbf{\hat{x}} &= g_{\phi}(\mathbf{z})
+\mathbf{z} &= g_{\phi}(\mathbf{\ddots{x}}) \\\\
+\mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
 $$\begin{align}
