@@ -25,11 +25,15 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 
 ## Base Autoencoders (AE)
 
+### Dataset
+
 The model is trained to reconstruct the inputs:
 
 $$\begin{align}
 \mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
+
+### Computation
 
 It learns to reduce the dimensionality:
 
@@ -37,6 +41,8 @@ $$\begin{align}
 \mathbf{z} &= g_{\phi}(\mathbf{x}) \\\\
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
+
+### Objective
 
 While minimizing the error:
 
@@ -46,16 +52,22 @@ L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_
 
 ## Denoising Autoencoders (DAE)
 
+### Dataset
+
 A DAE is actually a regular AE operating on scrambled inputs:
 
 $$\begin{align}
 \mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
 
+### Computation
+
 $$\begin{align}
 \mathbf{z} &= g_{\phi}(\mathbf{\ddot{x}}) \\\\
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
+
+### Objective
 
 $$\begin{align}
 L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
@@ -63,5 +75,36 @@ L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\
 
 ## Variational Autoencoders (VAE)
 
-### Re-parametrization
+### Formulation
 
+The input data is mapped to a whole distribution in the latent space, instead of a single sample:
+
+$$\begin{align}
+p\_{\theta}(\mathbf{x}) = \int\_{\mathbf{z}} p\_{\theta}({\mathbf{x}|\mathbf{z}}) p\_{\theta}(\mathbf{z}) \mathrm{d} \mathbf{z}
+\end{align}$$
+
+Sampling adequate $\mathbf{z}$ requires to reverse this probability, which is intractable.
+The encoder learns an approximation:
+
+$$\begin{align}
+q\_{\phi}({\mathbf{z} | \mathbf{x}}) \approx p\_{\theta}({\mathbf{z} | \mathbf{x}})
+\end{align}$$
+
+### Computation With Re-parametrization
+
+Sampling directly from ${\mathcal{N}}(\mu\_{\phi}(\mathbf{x}),\Sigma\_{\phi}(\mathbf{x}))$ would block the gradient flow.
+
+Instead $\mathbf{z}$ is sampled from an independent $\mathbf{\epsilon} \sim {\mathcal{N}(0, \mathbf{I})$ and then scaled:
+
+$$\begin{align}
+\mathbf{z} &= \mu\_{\phi}(\mathbf{x}) + \sigma\_{\phi}(\mathbf{x}) \odot \epsilon \\\\
+\mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
+\end{align}$$
+
+### Objective
+
+In addition to the reconstruction loss, the model is trained to minimize the distance from the encoder distribution to the decoder distribution:
+
+$$\begin{align}
+L\_\text{VAE}(\theta, \phi) = L\_\text{AE}(\theta, \phi) + D_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z} \vert \mathbf{x}) )
+\end{align}$$
