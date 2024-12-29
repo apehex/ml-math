@@ -28,7 +28,7 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 The model is trained to reconstruct the inputs:
 
 $$\begin{align}
-\mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n)}, \mathbf{x}^{(n)})} \rbrace
+\mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
 
 It learns to reduce the dimensionality:
@@ -49,18 +49,19 @@ L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_
 A DAE is actually a regular AE operating on scrambled inputs:
 
 $$\begin{align}
-\mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n)}, \mathbf{x}^{(n)})} \rbrace
+\mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
 
 $$\begin{align}
-\mathbf{z} &= g_{\phi}(\mathbf{\ddots{x}}) \\\\
+\mathbf{z} &= g_{\phi}(\mathbf{\ddot{x}}) \\\\
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
 $$\begin{align}
-L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
+L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
 \end{align}$$
 
-## Re-parametrization
-
 ## Variational Autoencoders (VAE)
+
+### Re-parametrization
+
