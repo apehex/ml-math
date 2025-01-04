@@ -94,7 +94,7 @@ q\_{\phi}({\mathbf{z} | \mathbf{x}}) \approx p\_{\theta}({\mathbf{z} | \mathbf{x
 
 Sampling directly from ${\mathcal{N}}(\mu\_{\phi}(\mathbf{x}),\Sigma\_{\phi}(\mathbf{x}))$ would block the gradient flow.
 
-Instead $\mathbf{z}$ is sampled from an independent $\mathbf{\epsilon} \sim {\mathcal{N}(0, \mathbf{I})$ and then scaled:
+Instead $\mathbf{z}$ is sampled from an independent $\mathbf{\epsilon} \sim \mathcal{N}(0, \mathbf{I})$ and then scaled:
 
 $$\begin{align}
 \mathbf{z} &= \mu\_{\phi}(\mathbf{x}) + \sigma\_{\phi}(\mathbf{x}) \odot \epsilon \\\\
