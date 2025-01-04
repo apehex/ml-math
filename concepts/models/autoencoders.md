@@ -106,5 +106,6 @@ $$\begin{align}
 In addition to the reconstruction loss, the model is trained to minimize the distance from the encoder distribution to the decoder distribution:
 
 $$\begin{align}
-L\_\text{VAE}(\theta, \phi) = L\_\text{AE}(\theta, \phi) + D_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z} \vert \mathbf{x}) )
+L\_\text{VAE}(\theta, \phi) &= -\log p\_{\theta}(\mathbf{x}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z} \vert \mathbf{x}) ) \\\\
+                            &= -\mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \log p\_\theta(\mathbf{x} \vert \mathbf{z}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z}) ) \\
 \end{align}$$
