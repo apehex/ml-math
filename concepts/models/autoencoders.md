@@ -109,3 +109,11 @@ $$\begin{align}
 L\_\text{VAE}(\theta, \phi) &= -\log p\_{\theta}(\mathbf{x}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z} \vert \mathbf{x}) ) \\\\
                             &= -\mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \log p\_\theta(\mathbf{x} \vert \mathbf{z}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z}) ) \\
 \end{align}$$
+
+## Beta-VAE
+
+Beta-VAE introduce an extra meta-parameter to weight the KL term:
+
+$$\begin{align}
+L\_\text{VAE}(\theta, \phi) &= -\mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \log p\_\theta(\mathbf{x} \vert \mathbf{z}) + \beta D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z}) ) \\
+\end{align}$$
