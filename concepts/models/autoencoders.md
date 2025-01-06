@@ -6,6 +6,8 @@ This training can be self-supervised, and the resulting encodings can be the bas
 
 These encodings have both lower dimensionality and meaning embedded geometrically.
 
+---
+
 ## Notations
 
 | Symbol                                                                    | Meaning                                                                           |
@@ -22,6 +24,8 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 | $f_{\theta}(.)$                                                           | The decoding function parametrized by $\theta$                                    |
 | $q_{\phi}(\mathbf{z} \vert \mathbf{x})$                                   | Estimated posterior probability function, also known as probabilistic encoder     |
 | $q_{\theta}(\mathbf{x} \vert \mathbf{z})$                                 | Likelihood of generating true data sample given the latent code, also known as probabilistic decoder. |
+
+---
 
 ## Base Autoencoders (AE)
 
@@ -50,6 +54,8 @@ $$\begin{align}
 L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{x}^{(i)})))^2
 \end{align}$$
 
+---
+
 ## Denoising Autoencoders (DAE)
 
 ### Dataset
@@ -72,6 +78,8 @@ $$\begin{align}
 $$\begin{align}
 L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
 \end{align}$$
+
+---
 
 ## Variational Autoencoders (VAE)
 
@@ -106,14 +114,16 @@ $$\begin{align}
 In addition to the reconstruction loss, the model is trained to minimize the distance from the encoder distribution to the decoder distribution:
 
 $$\begin{align}
-L\_\text{VAE}(\theta, \phi) &= -\log p\_{\theta}(\mathbf{x}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z} \vert \mathbf{x}) ) \\\\
-                            &= -\mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \log p\_\theta(\mathbf{x} \vert \mathbf{z}) + D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z}) ) \\
+L\_\text{VAE}(\theta, \phi) &= D\_\text{KL}( q\_\phi(\cdot \vert \mathbf{x}) \Vert p\_\theta(\cdot \vert \mathbf{x}) ) - \ln p\_{\theta}(\mathbf{x}) \\\\
+                            &= D\_\text{KL}( q\_\phi(\cdot \vert \mathbf{x}) \Vert p\_\theta(\cdot) ) - \mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \ln p\_\theta(\mathbf{x} \vert \mathbf{z})
 \end{align}$$
+
+---
 
 ## Beta-VAE
 
 Beta-VAE introduce an extra meta-parameter to weight the KL term:
 
 $$\begin{align}
-L\_\text{VAE}(\theta, \phi) &= -\mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \log p\_\theta(\mathbf{x} \vert \mathbf{z}) + \beta D\_\text{KL}( q\_\phi(\mathbf{z} \vert \mathbf{x}) \Vert p\_\theta(\mathbf{z}) ) \\
+L\_\text{VAE}(\theta, \phi) &= \beta D\_\text{KL}( q\_\phi(\cdot \vert \mathbf{x}) \Vert p\_\theta(\cdot) ) - \mathbb{E}\_{\mathbf{z} \sim q\_\phi(\mathbf{z} \vert \mathbf{x})} \ln p\_\theta(\mathbf{x} \vert \mathbf{z})
 \end{align}$$
