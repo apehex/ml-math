@@ -46,7 +46,7 @@ $$\begin{align}
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Objective
+### Loss
 
 While minimizing the error:
 
@@ -73,7 +73,7 @@ $$\begin{align}
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Objective
+### Loss
 
 $$\begin{align}
 L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
@@ -109,7 +109,7 @@ $$\begin{align}
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Objective
+### Loss
 
 In addition to the reconstruction loss, the model is trained to minimize the distance from the encoder distribution to the decoder distribution:
 
