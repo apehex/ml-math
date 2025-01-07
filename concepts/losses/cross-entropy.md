@@ -1,6 +1,8 @@
 # (Cross) Entropy
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -10,13 +12,17 @@
 | $P$                                                                       | A true probability distribution for $X$                                           |
 | $Q$                                                                       | A model / approximate probability distribution for $X$                            |
 
-## Information Content
+---
+
+### Information Content
 
 $$\begin{align}
 I(E) = \log\_{2} \left( \frac{1}{P(E)} \right)
 \end{align}$$
 
-## Cross Entropy
+---
+
+### Cross Entropy
 
 $$\begin{align}
 H(P, Q) = -\mathrm{E}\_{\sim P} \left[ \log Q \right]
@@ -34,7 +40,9 @@ $$\begin{align}
 H(P, Q) = -\int\_{\mathcal{X}} P(x) \\ \log Q(x) \\ \mathrm{d} x
 \end{align}$$
 
-## Computation
+---
+
+### Computation
 
 Often used to compare the predicted probabilities of the output with the target output:
 

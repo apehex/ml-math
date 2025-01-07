@@ -2,7 +2,9 @@
 
 This statistical distance measures how a model probability distribution $Q$ differs from a true distribution $P$.
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -11,7 +13,9 @@ This statistical distance measures how a model probability distribution $Q$ diff
 | $P$                                                                       | A true probability distribution for $\mathcal{X}$                                 |
 | $Q$                                                                       | A model / approximate probability distribution for $\mathcal{X}$                  |
 
-## KL Divergence
+---
+
+### KL Divergence
 
 $$\begin{align}
 D\_{\text{KL}} (P \parallel Q) = \mathrm{E}\_{\sim P} \left[ \log \left( \frac{\\ P(x) \\ }{Q(x)} \right) \right]
@@ -29,7 +33,9 @@ $$\begin{align}
 D\_{\text{KL}} (P \parallel Q) = \int\_{\mathcal{X}} P(x)  \\ \log \left( \frac{\\ P(x) \\ }{Q(x)} \right) \\ \mathrm{d} x
 \end{align}$$
 
-## Relation To Cross Entropy
+---
+
+### Relation To Cross Entropy
 
 $$\begin{align}
 D\_{\text{KL}} (P \parallel Q) = \mathrm{H} (P, Q) - \mathrm{H} (P, P)

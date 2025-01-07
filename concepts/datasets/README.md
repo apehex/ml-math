@@ -4,7 +4,9 @@ Usually, no analytical expression of the target functions are known.
 
 Instead of a full map, it is defined by a finite dataset of evaluations $(\mathbf{x}^{(k)}, \mathbf{y}^{(k)}))$ of the function.
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -16,7 +18,9 @@ Instead of a full map, it is defined by a finite dataset of evaluations $(\mathb
 | $\mathbf{x}^{(k)} = [x^{(k)}\_1, x^{(k)}\_2, \dots, x^{(k)}\_{r\_x}]$     | An input tensor of rank $r\_x$                                                    |
 | $\mathbf{y}^{(k)} = [y^{(k)}\_1, y^{(k)}\_2, \dots, y^{(k)}\_{r\_y}]$     | A target ransor of rank $r\_y$                                                    |
 
-## Data Types
+---
+
+### Data Types
 
 The datasets can be sorted by:
 

@@ -2,7 +2,9 @@
 
 With enough neurons, a single layer perceptron can approximate any continuous function.
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -20,7 +22,9 @@ $$\begin{align}
 
 Where $\bullet$ is the element-wise application of a function, eg $\sigma$.
 
-## Statement
+---
+
+### Statement
 
 $$\begin{align}
 \forall \mathcal{X} \subset \mathcal{R}^{n} \\ \text{compact}, \\ \forall f \in \mathcal{C}\_{0} (\mathcal{X}, \mathbb{R}^{m}), \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\

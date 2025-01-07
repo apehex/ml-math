@@ -2,7 +2,9 @@
 
 With enough layers, a fully connected ReLU network can approximate any Bochnerâ€“Lebesgue p-integrable function.
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -11,7 +13,9 @@ With enough layers, a fully connected ReLU network can approximate any Bochnerâ€
 | $\mathcal{G} = \mathcal{G}_{d}$                                           | The space of multi-layer ReLU nertworks of width $d$                              |
 | $\Vert \cdot \Vert = \int_{\mathbb{R}^{n}} \Vert f(x) \Vert^{p} dx$       | The norm p                                                                        |
 
-## Statement
+---
+
+### Statement
 
 $$
 \begin{align}

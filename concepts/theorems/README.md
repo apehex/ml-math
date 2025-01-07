@@ -2,7 +2,9 @@
 
 These theorems establish the existence of neural network approximation of functions.
 
-## Notations
+---
+
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -13,14 +15,18 @@ These theorems establish the existence of neural network approximation of functi
 | $\Vert \cdot \Vert$                                                       | A norm on $\mathcal{L}(\mathbb{R}^{n}, \mathbb{R}^{m})$                           |
 | $\epsilon \in \mathcal{R}^{*+}$                                           | The approximation error between $f$ and $g$                                       |
 
-## Statement
+---
+
+### Statement
 
 $$\begin{align}
 \forall f \in \mathcal{F}, \\ \forall \epsilon \in \mathcal{R}^{*+} \\\\
 \exists g \in \mathcal{G}, \\ \text{such that} \\ \Vert f - g \Vert < \epsilon
 \end{align}$$
 
-## Special Cases
+---
+
+### Special Cases
 
 This theorem has many variants, depending on the architecture of the approximation function and / or the target function.
 

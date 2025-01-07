@@ -8,7 +8,7 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 
 ---
 
-## Notations
+### Notations
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
@@ -27,9 +27,9 @@ These encodings have both lower dimensionality and meaning embedded geometricall
 
 ---
 
-## Base Autoencoders (AE)
+### Base Autoencoders (AE)
 
-### Dataset
+#### Dataset
 
 The model is trained to reconstruct the inputs:
 
@@ -37,7 +37,7 @@ $$\begin{align}
 \mathcal{D}\_{T} = \lbrace (\mathbf{x}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{x}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
 
-### Computation
+#### Computation
 
 It learns to reduce the dimensionality:
 
@@ -46,7 +46,7 @@ $$\begin{align}
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Loss
+#### Loss
 
 While minimizing the error:
 
@@ -56,9 +56,9 @@ L\_\text{AE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_
 
 ---
 
-## Denoising Autoencoders (DAE)
+### Denoising Autoencoders (DAE)
 
-### Dataset
+#### Dataset
 
 A DAE is actually a regular AE operating on scrambled inputs:
 
@@ -66,14 +66,14 @@ $$\begin{align}
 \mathcal{D}\_{T} = \lbrace (\mathbf{\ddot{x}}^{(1)}, \mathbf{x}^{(1)}), \dots, (\mathbf{\ddot{x}}^{(n)}, \mathbf{x}^{(n)}) \rbrace
 \end{align}$$
 
-### Computation
+#### Computation
 
 $$\begin{align}
 \mathbf{z} &= g_{\phi}(\mathbf{\ddot{x}}) \\\\
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Loss
+#### Loss
 
 $$\begin{align}
 L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\_{\theta}(g\_{\phi}(\mathbf{\ddot{x}}^{(i)})))^2
@@ -81,9 +81,9 @@ L\_\text{DAE}(\theta, \phi) = \frac{1}{n} \sum\_{i=1}^{n} (\mathbf{x}^{(i)} - f\
 
 ---
 
-## Variational Autoencoders (VAE)
+### Variational Autoencoders (VAE)
 
-### Formulation
+#### Formulation
 
 The input data is mapped to a whole distribution in the latent space, instead of a single sample:
 
@@ -98,7 +98,7 @@ $$\begin{align}
 q\_{\phi}({\mathbf{z} | \mathbf{x}}) \approx p\_{\theta}({\mathbf{z} | \mathbf{x}})
 \end{align}$$
 
-### Computation With Re-parametrization
+#### Computation With Re-parametrization
 
 Sampling directly from ${\mathcal{N}}(\mu\_{\phi}(\mathbf{x}),\Sigma\_{\phi}(\mathbf{x}))$ would block the gradient flow.
 
@@ -109,7 +109,7 @@ $$\begin{align}
 \mathbf{\hat{x}} &= f_{\theta}(\mathbf{z})
 \end{align}$$
 
-### Loss
+#### Loss
 
 In addition to the reconstruction loss, the model is trained to minimize the distance from the encoder distribution to the decoder distribution:
 
@@ -120,7 +120,7 @@ L\_\text{VAE}(\theta, \phi) &= D\_\text{KL}( q\_\phi(\cdot \vert \mathbf{x}) \Ve
 
 ---
 
-## Beta-VAE
+### Beta-VAE
 
 Beta-VAE introduce an extra meta-parameter to weight the KL term:
 
