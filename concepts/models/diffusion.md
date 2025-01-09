@@ -82,12 +82,6 @@ $$\begin{align}
 \mathcal{S} = \lbrace \beta\_{i} \in [0, 1], i \in [1 \cdots T] \rbrace
 \end{align}$$
 
-Alternatively, the schedule can be specified by its cumulative formulation:
-
-$$\begin{align}
-\mathcal{S} = \lbrace \bar{\alpha}\_{i} \in [0, 1], i \in [1 \cdots T] \rbrace
-\end{align}$$
-
 #### Dataset
 
 A model could be trained on all diffusion steps for each dataset sample.
@@ -121,3 +115,43 @@ L\_\text{DDM} = E_{\mathbf{x}\^{(i)}\_{0} \sim \mathcal{D}; \mathbf{z}\^{(i)} \s
 \end{align}$$
 
 ---
+
+### Noise Schedules
+
+#### Cumulative Noise
+
+The schedule can be specified by its cumulative formulation:
+
+$$\begin{align}
+\mathcal{S} = \lbrace \bar{\sigma}\_{i} \in [0, 1], i \in [1 \cdots T] \rbrace
+\end{align}$$
+
+And the iterative parameters are derived as follows:
+
+$$\begin{align}
+\alpha\_{t} &= \frac {1 - \sigma\_{t}\^{2}}{1 - \sigma\_{t-1}\^{2}} \\\\
+\beta\_{t} &= 1 - \frac {1 - \sigma\_{t}\^{2}}{1 - \sigma\_{t-1}\^{2}}
+\end{align}$$
+
+#### Arbitrary Schedules
+
+The model can be directly conditioned on the noise level to handle arbitrary schedules:
+
+- $\epsilon\_{\theta}(\mathbf{x}\_{t}, \sigma\_{t})$ instead of $\epsilon\_{\theta}(\mathbf{x}\_{t}, t)$
+- $f\_{\theta}(\mathbf{x}\_{t}, \sigma\_{t})$ instead of $f\_{\theta}(\mathbf{x}\_{t}, t)$
+
+---
+
+### Latent Diffusion
+
+The whole diffusion process is applied in the latent space of a pretrained autoencoder:
+
+$$\begin{align}
+\mathbf{z}\_{t} &= {\sqrt {1 - \beta\_{t}}} \mathbf{z}\_{t-1} + {\sqrt {\beta\_{t}}} \mathbf{\epsilon}\_{t} \\\\
+\end{align}$$
+
+From the POV of $\mathbf{z} = AE(\mathbf{x})$, everything works exactly the same.
+
+---
+
+### ODE Formulation
