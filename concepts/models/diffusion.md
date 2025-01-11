@@ -39,7 +39,8 @@ $$\begin{align}
 The overall diffusion is a gaussian process:
 
 $$\begin{align}
-q(\mathbf{x}\_{0:T}) &= q(\mathbf{x}\_{0}) q(\mathbf{x}\_{1} \vert \mathbf{x}\_{0}) \cdots q(\mathbf{x}\_{T} \vert \mathbf{x}\_{T-1}) \\\\
+q(\mathbf{x}\_{0:T})
+&= q(\mathbf{x}\_{0}) q(\mathbf{x}\_{1} \vert \mathbf{x}\_{0}) \cdots q(\mathbf{x}\_{T} \vert \mathbf{x}\_{T-1}) \\\\
 &= q(\mathbf{x}\_{0}) \mathcal{N}(\mathbf{x}\_{1} \vert {\sqrt {\alpha\_{1}}} \mathbf{x}\_{0}, \beta\_{1} \mathbf{I}) \cdots \mathcal{N}(\mathbf{x}\_{T} \vert {\sqrt {\alpha\_{T}}} \mathbf{x}_{T-1}, \beta\_{T} \mathbf{I})
 \end{align}$$
 
@@ -64,8 +65,9 @@ $$\begin{align}
 Then, the model can reverse the latest diffusion step and estimate the parameters of $\mathbf{x}\_{t-1}$:
 
 $$\begin{align}
-\mu\_{\theta}(\mathbf{x}\_{t},t) &= \tilde{\mathbf{\mu}}\_{t} \left( \mathbf{x}\_{t}, \frac{\mathbf{x}\_{t} - \sigma\_{t} \mathbf{\epsilon}\_{\theta}(\mathbf{x}\_{t}, t)}{\sqrt{{\bar{\alpha}}\_{t}}} \right)
-                                 &= \frac{\mathbf{x}\_{t} - \mathbf{\epsilon}\_{\theta}(\mathbf{x}\_{t}, t) \beta\_{t} / \sigma\_{t}}{\sqrt{\alpha\_{t}}}
+\mu\_{\theta}(\mathbf{x}\_{t},t)
+&= \tilde{\mathbf{\mu}}\_{t} \left( \mathbf{x}\_{t}, \frac{\mathbf{x}\_{t} - \sigma\_{t} \mathbf{\epsilon}\_{\theta}(\mathbf{x}\_{t}, t)}{\sqrt{{\bar{\alpha}}\_{t}}} \right)
+&= \frac{\mathbf{x}\_{t} - \mathbf{\epsilon}\_{\theta}(\mathbf{x}\_{t}, t) \beta\_{t} / \sigma\_{t}}{\sqrt{\alpha\_{t}}}
 \end{align}$$
 
 And iterate until it composes an estimation of $\mathbf{x}\_{0}$.
@@ -147,11 +149,57 @@ The model can be directly conditioned on the noise level to handle arbitrary sch
 The whole diffusion process is applied in the latent space of a pretrained autoencoder:
 
 $$\begin{align}
-\mathbf{z}\_{t} &= {\sqrt {1 - \beta\_{t}}} \mathbf{z}\_{t-1} + {\sqrt {\beta\_{t}}} \mathbf{\epsilon}\_{t} \\\\
+\mathbf{z}\_{t} &= {\sqrt {1 - \beta\_{t}}} \mathbf{z}\_{t-1} + {\sqrt {\beta\_{t}}} \mathbf{\epsilon}\_{t}
 \end{align}$$
 
 From the POV of $\mathbf{z} = AE(\mathbf{x})$, everything works exactly the same.
 
 ---
 
-### ODE Formulation
+### Score Modeling
+
+Learning the score is equivalent to learning to denoise:
+
+$$\begin{align}
+\mathbf{\epsilon}\_{\theta}(\mathbf{x}\_{t}, t)
+&= {\frac{\mathbf{x}\_{t} - {\sqrt{{\bar{\alpha}}\_{t}}} E\_{q}[\mathbf{x}\_{0} \vert \mathbf{x}\_{t}]} {\sigma\_{t}}} \\\\
+&= -\sigma\_{t} \nabla\_{\mathbf{x}\_{t}} \ln q(\mathbf{x}\_{t})
+\end{align}$$
+
+---
+
+### Continuous Diffusion
+
+---
+
+### Classifier Guidance
+
+A diffusion model can be conditioned on text descriptions $\mathbf{y}$ with:
+
+$$\begin{align}
+\nabla\_{\mathbf{x}} \ln p(\mathbf{x} \vert \mathbf{y})
+= \underbrace{\nabla\_{\mathbf{x}} \ln p(\mathbf{x})}\_{\text{score}} + \underbrace{\nabla\_{\mathbf{x}} \ln p(\mathbf{y} \vert \mathbf{x})}\_{\text{classifier guidance}}
+\end{align}$$
+
+During the diffusion process:
+
+$$\begin{align}
+\nabla\_{\mathbf{x}\_{t}} \ln p(\mathbf{x}\_{t} \vert \mathbf{y},t)
+= \nabla\_{\mathbf{x}\_{t}} \ln p(\underbrace{\mathbf{y} \vert \mathbf{x}\_{t},t}\_{\mathbf{y} \vert \mathbf{x}\_{t}}) + \nabla\_{\mathbf{x}\_{t}} \ln p(\mathbf{x}\_{t} \vert t)
+\end{align}$$
+
+Incorporated in the DDPM formulation:
+
+$$\begin{align}
+\epsilon\_{\theta}(\mathbf{x}\_{t}, \mathbf{y}, t)
+&= -\sigma\_{t} \nabla\_{\mathbf{x}\_{t}} \ln p(\mathbf{x}\_{t} \vert \mathbf{y},t) \\\\
+&= \epsilon\_{\theta}(\mathbf{x}\_{t},t) - \underbrace{\sigma\_{t} \nabla\_{\mathbf{x}\_{t}} \ln p(\mathbf{x} \vert \mathbf{x}\_{t},t)}\_{\text{classifier guidance}}
+\end{align}$$
+
+---
+
+### Flow Modeling
+
+$$\begin{align}
+\frac{d \mathbf{x}}{dt} = - \dot{\sigma(t)} {\sigma(t)} \nabla\_{\mathbf{x}} \ln p(\mathbf{x})
+\end{align}$$
