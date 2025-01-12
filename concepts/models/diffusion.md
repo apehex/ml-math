@@ -201,5 +201,5 @@ $$\begin{align}
 ### Flow Modeling
 
 $$\begin{align}
-\frac{d \mathbf{x}}{dt} = - \dot{\sigma(t)} {\sigma(t)} \nabla\_{\mathbf{x}} \ln p(\mathbf{x})
+\frac{d \mathbf{x}}{dt} = - \dot{\sigma}(t) {\sigma(t)} \nabla\_{\mathbf{x}} \ln p(\mathbf{x})
 \end{align}$$
