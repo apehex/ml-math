@@ -170,6 +170,24 @@ $$\begin{align}
 
 ### Continuous Diffusion
 
+In the SDE formulation, the data $\mathbf{x}(t)$ evolves continuously from a clean sample $\mathbf{x}(0)$ to pure noise $\mathbf{x}(T)$:
+
+$$\begin{align}
+d\mathbf{x} = f(\mathbf{x}, t) dt + g(t) d\mathbf{w}
+\end{align}$$
+
+Sampling is performed thanks to:
+
+$$\begin{align}
+d\mathbf{x} = \left[ f(\mathbf{x}, t) - g(t)\^{2} \nabla\_{\mathbf{x}} \ln p\_{t}(\mathbf{x}) \right] dt + g(t) d\mathbf{\tilde{w}}
+\end{align}$$
+
+Which is approximated by:
+
+$$\begin{align}
+d\mathbf{x} = \left[ f(\mathbf{x}, t) - g(t)\^{2} s\_{\theta}(\mathbf{x}, t) \right] dt + g(t) d\mathbf{\tilde{w}}
+\end{align}$$
+
 ---
 
 ### Classifier Guidance
@@ -199,6 +217,8 @@ $$\begin{align}
 ---
 
 ### Flow Modeling
+
+All the diffusion variants map into the flow equation:
 
 $$\begin{align}
 \frac{d \mathbf{x}}{dt} = - \dot{\sigma}(t) {\sigma(t)} \nabla\_{\mathbf{x}} \ln p(\mathbf{x})
