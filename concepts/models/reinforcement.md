@@ -58,13 +58,13 @@ r\_{t}(\theta) = {\frac{\pi\_{\theta}\left( a\_{t} \mid s\_{t} \right)}{\pi\_{\t
 And a given action is evaluated according to the current (old) policy:
 
 $$\begin{align}
-A\_{t}(\theta) = A\_{\pi\_{\theta\_{k}}(s\_{t}, a\_{t})
+A\_{t} = A\_{\pi\_{\theta\_{k}}}(s\_{t}, a\_{t})
 \end{align}$$
 
 Then the policy is optimized in the neighborhood of its current value with the objective:
 
 $$\begin{align}
-L(\theta) = E\_{t} \left[ \min(r\_{t}(\theta) A\_{\pi\_{\theta\_{k}}(s\_{t}, a\_{t}), clip(r\_{t}(\theta), 1 - \epsilon, 1 + \epsilon) A\_{\pi\_{\theta\_{k}}(s\_{t}, a\_{t})) \right]
+L(\theta) = E\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\theta), 1 - \epsilon, 1 + \epsilon) A\_{t})) \right]
 \end{align}$$
 
 ### Group Relative Policy Optimization (GRPO)
