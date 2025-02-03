@@ -8,13 +8,15 @@
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| $T \ in [1, \infty]$                                                      | The time horizon, which can be infinite                                           |
+| $\gamma \in [0, 1[$                                                       | The discount rate, weighting the future rewards down                              |
 | $\mathcal{S}$                                                             | The state space, both environment and agent states                                |
 | $\mathcal{A}$                                                             | The action space, for the agent                                                   |
 | $P\_{a}(s,s') = \Pr(S\_{t+1}=s' \mid S\_{t}=s, A\_{t}=a)$                 | The transition probability from state $s$ to $s'$ under action $a$                |
 | $R\_{a}(s,s')$                                                            | The immediate reward after transition from $s$ to $s'$ with $a$                   |
 | $G = \sum\_{t=0}\^{\infty} \gamma\^{t} R\_{t+1}$                          | The total **discounted** return                                                   |
-| $\gamma \in [0, 1[$                                                       | The discount rate, weighting the future rewards down                              |
-| $\tau = (s\_{0}, a\_{0}, s\_{1}, a\_{1}, \dots)$                          | A trajectory                                                                      |
+| $\pi\_{\theta}$                                                           | The agent's policy, optionally parametrized by $\theta$                           |
+| $\tau = (s\_{0}, a\_{0}, s\_{1}, a\_{1}, \dots)$                          | A trajectory, as a flattened sequence of state-action pairs                       |
 
 ---
 
@@ -29,7 +31,7 @@
 The probability of a given trajectory depends on both the environment and the policy:
 
 $$\begin{align}
-\Pr(\tau \mid \pi) = \rho\_{0}(s\_{0}) \prod\_{t=0}\^{T-1} \Pr(s\_{t+1} \mid s\_{t},a\_{t}) \pi(a\_{t} \mid s\_{t})
+\Pr(\tau \mid \pi) = \rho\_{0}(s\_{0}) \prod\_{t=0}\^{T} \Pr(s\_{t+1} \mid s\_{t},a\_{t}) \pi(a\_{t} \mid s\_{t})
 \end{align}$$
 
 The goal of RL agents is to find a policy $\pi$ that maximizes the expected return:
@@ -45,6 +47,36 @@ Expressed to evaluate a specific action, as the advantage function:
 $$\begin{align}
 Q\_{\pi}(s, a) &= \mathbb{E} \left[ G \mid S\_{0} = s, a \right] \\\\
 A\_{\pi}(s, a) &= Q\_{\pi}(s, a) - V\_{\pi}(s)
+\end{align}$$
+
+### Actor-Critic RL
+
+These methods estimate both the policy and the value functions:
+
+- the actor's distribution $\pi\_{\theta}(a \mid s)$ rules the selection of actions
+- the critic's evaluation $V\_{\psi}(s)$ guides the actor
+
+#### Critic Optimization
+
+The parameters of the critic are optimized according to the temporal difference (TD) loss:
+
+$$\begin{align}
+L(\psi) = \mathbb{E} \left[ (V\_{\psi}(s\_{t}) - (R\_{t} + \gamma V\_{\psi}(s\_{t+1}))\^{2} \right]
+\end{align}$$
+
+The precision can be pushed further:
+
+$$\begin{align}
+L(\psi) = \mathbb{E} \left[ (V\_{\psi}(s\_{t}) - (\sum\_{k=0}\^{n-1} R\_{t+k} + \gamma\^{n} V\_{\psi}(s\_{t+n}))\^{2} \right]
+\end{align}$$
+
+#### Actor Optimization
+
+The parameters of the policy are updated according to the gradient update rule:
+
+$$\begin{align}
+\nabla\_{\theta}J(\theta)
+&= \mathbb{E}\_{\pi\_{\theta}} \left[ \sum\_{t=0}\^{T} \nabla\_{\theta} \ln \pi\_{\theta }(a\_{t} \mid s\_{t}) \cdot A\_{t } \right]
 \end{align}$$
 
 ### Proximal Policy Optimization (PPO)
@@ -64,7 +96,7 @@ A\_{t} = A\_{\pi\_{\theta\_{k}}}(s\_{t}, a\_{t})
 Then the policy is optimized in the neighborhood of its current value with the objective:
 
 $$\begin{align}
-L(\theta) = E\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\theta), 1 - \epsilon, 1 + \epsilon) A\_{t})) \right]
+L(\theta) = \mathbb{E}\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\theta), 1 - \epsilon, 1 + \epsilon) A\_{t})) \right]
 \end{align}$$
 
 ### Group Relative Policy Optimization (GRPO)
