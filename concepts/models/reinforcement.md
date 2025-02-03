@@ -111,10 +111,10 @@ RLHF is a special case of RL algorithms where:
 The loss function for the reward model is:
 
 $$\begin{align}
-\mathcal{L}(\theta) = -{\frac {1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (r\_{\theta}(x,y\_{+}) - r\_{\theta}(x,y\_{-}))) \right]
+\mathcal{L}(\theta) = -{\frac {1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (r\_{\theta}(x,y\^{+}) - r\_{\theta}(x,y\^{-}))) \right]
 \end{align}$$
 
-Where the prompt $x$ and the preferred output $y\_{+}$ over $y\_{-}$ are sampled from $K$ labeled completions.
+Where the prompt $x$ and the preferred output $y\^{+}$ over $y\^{-}$ are sampled from $K$ labeled completions.
 
 ### Group Relative Policy Optimization (GRPO)
 
