@@ -8,13 +8,13 @@
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| $T \ in [1, \infty]$                                                      | The time horizon, which can be infinite                                           |
+| $T \in [0, \infty]$                                                      | The time horizon, which can be infinite                                            |
 | $\gamma \in [0, 1[$                                                       | The discount rate, weighting the future rewards down                              |
 | $\mathcal{S}$                                                             | The state space, both environment and agent states                                |
 | $\mathcal{A}$                                                             | The action space, for the agent                                                   |
 | $P\_{a}(s,s') = \Pr(S\_{t+1}=s' \mid S\_{t}=s, A\_{t}=a)$                 | The transition probability from state $s$ to $s'$ under action $a$                |
 | $R\_{a}(s,s')$                                                            | The immediate reward after transition from $s$ to $s'$ with $a$                   |
-| $G = \sum\_{t=0}\^{\infty} \gamma\^{t} R\_{t+1}$                          | The total **discounted** return                                                   |
+| $G = \sum\_{t=0}\^{\infty} \gamma\^{t} R\_{t+1}$                          | The total discounted return                                                       |
 | $\pi\_{\theta}$                                                           | The agent's policy, optionally parametrized by $\theta$                           |
 | $\tau = (s\_{0}, a\_{0}, s\_{1}, a\_{1}, \dots)$                          | A trajectory, as a flattened sequence of state-action pairs                       |
 
@@ -67,7 +67,7 @@ L(\psi) = \mathbb{E} \left[ (V\_{\psi}(s\_{t}) - (R\_{t} + \gamma V\_{\psi}(s\_{
 The precision can be pushed further:
 
 $$\begin{align}
-L(\psi) = \mathbb{E} \left[ (V\_{\psi}(s\_{t}) - (\sum\_{k=0}\^{n-1} R\_{t+k} + \gamma\^{n} V\_{\psi}(s\_{t+n}))\^{2} \right]
+L(\psi) = \mathbb{E} \left[ (V\_{\psi}(s\_{t}) - (\sum\_{k=0}\^{n-1} R\_{t+k} + \gamma\^{n} V\_{\psi}(s\_{t+n})))\^{2} \right]
 \end{align}$$
 
 #### Actor Optimization
