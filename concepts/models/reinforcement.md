@@ -20,7 +20,7 @@
 
 ### Taxonomy
 
-![][.images/algorithms.svg]
+![][image-taxonomy]
 
 ---
 
@@ -70,3 +70,5 @@ L(\theta) = E\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\theta), 1 - \
 ### Group Relative Policy Optimization (GRPO)
 
 ### RL From Human Feedback (RLHF)
+
+[image-taxonomy]: .images/algorithms.svg
