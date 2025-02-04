@@ -128,7 +128,7 @@ $$\begin{align}
 And adds a regularization KL divergence to prevent the model from forgetting:
 
 $$\begin{align}
-L(\theta) = \mathbb{E}\_{x \sim \Pr(X)} \frac{1}{G} \sum\_{i=1}\^{G} \left[ \min(r\_{i}(\theta) \hat{A}\_{i}, clip(r\_{i}(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}\_{i})) \right] - \beta \mathbb{D}\_{KL}(\pi\_{\theta} \Vert \pi\_{ref})
+L(\theta) = \mathbb{E}\_{x \sim \Pr(X)} \left[ \frac{1}{G} \sum\_{i=1}\^{G} \min \left( r\_{i}(\theta) \hat{A}\_{i}, clip(r\_{i}(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}\_{i} \right) \right] - \beta \mathbb{D}\_{KL}(\pi\_{\theta} \Vert \pi\_{ref})
 \end{align}$$
 
 Where $r\_{i}(\theta)$ is the measure of policy change on the output $i$:
