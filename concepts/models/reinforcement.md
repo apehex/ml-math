@@ -104,18 +104,18 @@ L(\theta) = \mathbb{E}\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\thet
 
 RLHF is a special case of RL algorithms where:
 
-- the state space $\mathcal{S}$ is the set of possible user prompts $x$
-- the action space $\mathcal{A}$ is the set of possible text completions $y$
+- the state space $\mathcal{S}$ is the set of possible user prompts $s$
+- the action space $\mathcal{A}$ is the set of possible text completions $a$
 - the policy $\pi\_{\theta}$ is the LLM itself
 - the critic $V\_{\phi}$ is a reward model trained on human preferences
 
 The loss function for the reward model is:
 
 $$\begin{align}
-\mathcal{L}(\theta) = -{\frac{1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (V\_{\phi}(x,y\^{+}) - V\_{\phi}(x,y\^{-}))) \right]
+\mathcal{L}(\theta) = -{\frac{1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (V\_{\phi}(s,a\^{+}) - V\_{\phi}(s,a\^{-}))) \right]
 \end{align}$$
 
-Where the prompt $x$ and the preferred output $y\^{+}$ over $y\^{-}$ are sampled from $K$ labeled completions.
+Where the prompt $s$ and the preferred output $a\^{+}$ over $a\^{-}$ are sampled from $K$ labeled completions.
 
 ### Group Relative Policy Optimization (GRPO)
 
