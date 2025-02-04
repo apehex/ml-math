@@ -8,8 +8,9 @@
 
 | Symbol                                                                    | Meaning                                                                           |
 | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| $T \in [0, \infty]$                                                      | The time horizon, which can be infinite                                            |
+| $T \in [0, \infty]$                                                       | The time horizon, which can be infinite                                           |
 | $\gamma \in [0, 1[$                                                       | The discount rate, weighting the future rewards down                              |
+| $\epsilon \in [0, 1[$                                                     | The clipping rate, around $0.1$                                                   |
 | $\mathcal{S}$                                                             | The state space, both environment and agent states                                |
 | $\mathcal{A}$                                                             | The action space, for the agent                                                   |
 | $P\_{a}(s,s') = \Pr(S\_{t+1}=s' \mid S\_{t}=s, A\_{t}=a)$                 | The transition probability from state $s$ to $s'$ under action $a$                |
@@ -103,15 +104,15 @@ L(\theta) = \mathbb{E}\_{t} \left[ \min(r\_{t}(\theta) A\_{t}, clip(r\_{t}(\thet
 
 RLHF is a special case of RL algorithms where:
 
-- the state space $\mathcal{S}$ is the set of possible user prompts
-- the action space $\mathcal{A}$ is the set of possible text completions
+- the state space $\mathcal{S}$ is the set of possible user prompts $x$
+- the action space $\mathcal{A}$ is the set of possible text completions $y$
 - the policy $\pi\_{\theta}$ is the LLM itself
-- the critic $r\_{\phi}$ is a reward model trained on human preferences
+- the critic $V\_{\phi}$ is a reward model trained on human preferences
 
 The loss function for the reward model is:
 
 $$\begin{align}
-\mathcal{L}(\theta) = -{\frac {1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (r\_{\theta}(x,y\^{+}) - r\_{\theta}(x,y\^{-}))) \right]
+\mathcal{L}(\theta) = -{\frac{1}{K \choose 2}} \mathbb{E} \left[ \ln(\sigma (V\_{\phi}(x,y\^{+}) - V\_{\phi}(x,y\^{-}))) \right]
 \end{align}$$
 
 Where the prompt $x$ and the preferred output $y\^{+}$ over $y\^{-}$ are sampled from $K$ labeled completions.
